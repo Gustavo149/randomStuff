@@ -18,13 +18,23 @@
             margin: 0; 
         }
 
+        #upgrade1{
+            position: relative;
+            display:inline-block;
+        }
     </style>
 </head>
 <body>
     <h4 id='level'></h4>
     <p id="tool1"></p><br>
-    <span><input type="button" id="clicker" value="Click"><input type="button" value="Upgrade"><input type="button" value="Automate" disabled></span><br><br>
-    <input type="number" name="currency" id='currency' value="" style="display:none" disabled>
+    <span><input type="button" id="clicker" value="Click"><input type="button" value="Automate" disabled></span><br><br>
+    <input type="number" name="currency" id='currency' value="" style="display:none" disabled><br><br><br>
+
+    <div id="shop">
+
+        <span id="upgrade1"><p>Click Value :</p><p id="display-u1">0 / 100</p><input type="button" id="btn-u1" value="Upgrade"><input type="number" name="price" id="price-u1" style="width: 30px;" disabled value="5"></span><br><br>
+        <span id="upgrade2"><p>Bar Speed :</p><p id="display-u2">0 / 100</p><input type="button" id="btn-u2" value="Upgrade"><input type="number" name="price" id="price-u2" style="width: 30px;" disabled value="5"></span><br>
+    </div>
 </body>
     <script>
         let bar = ['▯','▯','▯','▯','▯','▯','▯','▯','▯','▯']
@@ -40,6 +50,7 @@
                     elem.innerHTML = `[${_progress.join('')}]`
                     currency.style.display = 'flex';
                     currency.value = currency.value < 1 ? 1 : Number(currency.value) + 1
+                    document.getElementById('clicker').disabled = false
                     clearInterval(id);
                 } else {
                       delta < 1 ? progress[0] = '▮'
@@ -62,10 +73,12 @@
 
         document.getElementById('tool1').innerHTML = `[${bar.join('')}]`
 
-        document.getElementById('clicker').addEventListener('click' , event => {bar = move(bar,'tool1')})
+        document.getElementById('clicker').addEventListener('click' , event => {
+            event.target.disabled = true
+            bar = move(bar,'tool1')
+            })
         
-        document.getElementById('currency').addEventListener('change', event => {
+        document.getElementById('btn-u1').addEventListener()
             
-        })
     </script>
 </html>
