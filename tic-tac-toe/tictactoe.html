@@ -29,8 +29,8 @@
             left: 50%;
             width: 29em;
             height:29em;
-            margin-top: -13em; /*set to a negative number 1/2 of your height*/
-            margin-left: -15em; /*set to a negative number 1/2 of your width*/
+            margin-top: -13em;
+            margin-left: -15em;
             color: #ccc;
         }
 
@@ -84,26 +84,26 @@
             position: fixed;
             top: 75%;
             left: 69%;
-            margin-top: -13em; /*set to a negative number 1/2 of your height*/
-            margin-left: -15em; /*set to a negative number 1/2 of your width*/
+            margin-top: -13em; 
+            margin-left: -15em;
         }
     </style>
 </head>
 <body>
     <h1 id='announce'></h1>
     <div id='board'>
-        <div id="A1" class="box"></div><div id="A2" class="box"></div><div id="A3" class="box"></div>
-        <div id="B1" class="box"></div><div id="B2" class="box"></div><div id="B3" class="box"></div>
-        <div id="C1" class="box"></div><div id="C2" class="box"></div><div id="C3" class="box"></div>
+        <div id="A1" class="box" value="false"></div><div id="A2" class="box" value="false"></div><div id="A3" class="box" value="false"></div>
+        <div id="B1" class="box" value="false"></div><div id="B2" class="box" value="false"></div><div id="B3" class="box" value="false"></div>
+        <div id="C1" class="box" value="false"></div><div id="C2" class="box" value="false"></div><div id="C3" class="box" value="false"></div>
     </div>
 </body>
     <script>
         let won = false
 
-
         let flip = true
-        const flipper = x => x = !x
-
+        const flipper = x => {
+         return x = !x
+        }
         
         let board = [[ null, null, null],[ null, null, null],[ null, null, null]]
         const calc = (board,won) =>{
@@ -126,12 +126,16 @@
             return _won
         }
 
+        const bot = flipped => {
+            
+        }
 
         document.getElementById('A1').addEventListener('click' , event =>{
             if(!won){
                 if(event.target.innerHTML.length === 0){
                     event.target.style.cursor = 'default'
                     event.target.innerHTML = flip ? 'X' : 'O'
+                    event.target.attributes.value.value = 'true'
                     board[0][0] = flip ? 1 : -1
                     flip = flipper(flip)
                     calc(board,won)
@@ -146,6 +150,7 @@
                 if(event.target.innerHTML.length === 0){
                     event.target.style.cursor = 'default'
                     event.target.innerHTML = flip ? 'X' : 'O'
+                    event.target.attributes.value.value = 'true'
                     board[0][1] = flip ? 1 : -1
                     flip = flipper(flip)
                     calc(board,won)
@@ -159,6 +164,7 @@
             if(event.target.innerHTML.length === 0){
                 event.target.style.cursor = 'default'
                 event.target.innerHTML = flip ? 'X' : 'O'
+                event.target.attributes.value.value = 'true'
                 board[0][2] = flip ? 1 : -1
                 flip = flipper(flip)
                 calc(board,won)
@@ -172,6 +178,7 @@
             if(event.target.innerHTML.length === 0){
                 event.target.style.cursor = 'default'
                 event.target.innerHTML = flip ? 'X' : 'O'
+                event.target.attributes.value.value = 'true'
                 board[1][0] = flip ? 1 : -1
                 flip = flipper(flip)
                 calc(board,won)
@@ -185,6 +192,7 @@
             if(event.target.innerHTML.length === 0){
                 event.target.style.cursor = 'default'
                 event.target.innerHTML = flip ? 'X' : 'O'
+                event.target.attributes.value.value = 'true'
                 board[1][1] = flip ? 1 : -1
                 flip = flipper(flip)
                 calc(board,won)
@@ -198,6 +206,7 @@
             if(event.target.innerHTML.length === 0){
                 event.target.style.cursor = 'default'
                 event.target.innerHTML = flip ? 'X' : 'O'
+                event.target.attributes.value.value = 'true'
                 board[1][2] = flip ? 1 : -1
                 flip = flipper(flip)
                 calc(board,won)
@@ -211,6 +220,7 @@
             if(event.target.innerHTML.length === 0){
                 event.target.style.cursor = 'default'
                 event.target.innerHTML = flip ? 'X' : 'O'
+                event.target.attributes.value.value = 'true'
                 board[2][0] = flip ? 1 : -1
                 flip = flipper(flip)
                 calc(board,won)
@@ -224,6 +234,7 @@
             if(event.target.innerHTML.length === 0){
                 event.target.style.cursor = 'default'
                 event.target.innerHTML = flip ? 'X' : 'O'
+                event.target.attributes.value.value = 'true'
                 board[2][1] = flip ? 1 : -1
                 flip = flipper(flip)
                 calc(board,won)
@@ -237,6 +248,7 @@
                 if(event.target.innerHTML.length === 0){
                 event.target.style.cursor = 'default'
                 event.target.innerHTML = flip ? 'X' : 'O'
+                event.target.attributes.value.value = 'true'
                 board[2][2] = flip ? 1 : -1
                 flip = flipper(flip)
                 calc(board,won)
