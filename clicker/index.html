@@ -99,7 +99,6 @@
             }
         }
 
-
         const move = (progress,element) =>  {
             document.getElementById('clicker').disabled = true
             let _progress = [...progress]
@@ -131,8 +130,6 @@
             bar1.frames = _progress
         }
 
-        
-        
         bar1.element.innerHTML = `[${bar1.frames.join('')}]`
 
         document.getElementById('clicker').addEventListener('click' , () => move(bar1.frames , bar1.element))
